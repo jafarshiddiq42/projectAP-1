@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Servis;
-use App\Models\Transaksi;
+use App\Models\Layanan;
 use Illuminate\Http\Request;
 
-class TransaksiController extends Controller
+class LayananController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $nomor=1;
-        $transaksi = Transaksi ::all();
-        return view('page.transaksi.index', compact('transaksi','nomor'));
+        $layanans = Layanan::all();
+        return view('page.layanan.index',compact('layanans'));
     }
 
     /**
@@ -26,11 +24,8 @@ class TransaksiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        $TRS =  Transaksi::join('servis','servis.id','transaksis.servis_id')->get();
-        // dd($TRS);
-        // $serviss = Servis::all();
-        return view('page.transaksi.form');
+    {
+        
     }
 
     /**
@@ -41,16 +36,11 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        $transaksi= new Transaksi();
-        // $transaksi->nofak =$request->nofak;
-        $transaksi->tanggalkeluar =$request->tanggalkeluar;
-        $transaksi->servis_id =$request->idservis;
-        // $transaksi->qty =$request->qty;
-        $transaksi->harga =$request->harga;
-        // $transaksi->total =$request->total;
-        $transaksi->save();
+        $layananbaru = new Layanan();
+        $layananbaru->jenislayanan = $request->namalayanan;
+        $layananbaru->save();
+        return redirect()->back();
 
-        return redirect('/transaksi/index');
     }
 
     /**
@@ -95,6 +85,8 @@ class TransaksiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $layanan = Layanan::find($id);
+        $layanan->delete();
+         return redirect()->back();
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Layanan;
 use App\Models\Mekanik;
 use App\Models\Servis;
 use App\Models\Transaksi;
@@ -20,6 +21,7 @@ class ServisController extends Controller
         $nomor=1;
         $servis = Servis ::all();
         return view('page.servis.index', compact('servis','nomor'));
+        // dd($servis);
     }
 
     /**
@@ -29,8 +31,9 @@ class ServisController extends Controller
      */
     public function create() 
     {
+        $layanans = Layanan::all();
         $mekanik = Mekanik::all();
-        return view('page.servis.form',compact('mekanik'));
+        return view('page.servis.form',compact('mekanik','layanans'));
     }
 
     /**
@@ -45,17 +48,13 @@ class ServisController extends Controller
         $servis = new Servis();
         $servis->namapelanggan = $request->namapelanggan;
         $servis->mekanik_id = $request->mekanik;
-        $servis->alamat = $request->alamat;
+        $servis->layanan_id = $request->layanan;
         $servis->tanggalmasuk = $request->tanggalmasuk;
+        $servis->alamat = $request->alamat;
         $servis->telp = $request->telp;
+        $servis->kerusakan = $request->kerusakan;
+
         $servis->save();
-        for ($i=0; $i <  count( $request->barang) ; $i++) { 
-            $barang = new Barang();
-            $barang->nm_barang = $request->barang[$i]; 
-            $barang->kerusakan = $request->kerusakan[$i];
-            $barang->servis_id = $servis->id;
-            $barang->save(); 
-        }
 
         // echo count( $request->barang);
 
@@ -83,9 +82,10 @@ class ServisController extends Controller
     {
         $servis = Servis:: find ($id);
         $mekanik = Mekanik::all();
+        $layanans = Layanan :: all();
         $barangs = Barang::where('servis_id','=',$id)->get();
         
-        return view('page.servis.edit',compact('servis','mekanik','barangs'));
+        return view('page.servis.edit',compact('servis','mekanik','barangs','layanans'));
     }
 
     /**
@@ -101,34 +101,37 @@ class ServisController extends Controller
 
         $servis->namapelanggan = $request->namapelanggan;
         $servis->mekanik_id = $request->mekanik;
-        $servis->alamat = $request->alamat;
+        $servis->layanan_id = $request->layanan;
         $servis->tanggalmasuk = $request->tanggalmasuk;
+        $servis->alamat = $request->alamat;
         $servis->telp = $request->telp;
+        $servis->kerusakan = $request->kerusakan;
+
         $servis->save();
 
-        $index = 0;
-      if (isset($request->barangs)) {
+    //     $index = 0;
+    //   if (isset($request->barangs)) {
           
-        foreach ($request->barangs as $barang) {
-            $barangedit = Barang::find($request->idbarang[$index]) ;
-            $barangedit->nm_barang = $barang;
-            $barangedit->kerusakan = $request->kerusakan[$index];
-            $index++;
-            $barangedit->save();
-         }
-      }
-        // $index2=0;
-        for ($i=0; $i <  count( $request->barangtambah) ; $i++) { 
-            $barang = new Barang();
-            $barang->nm_barang = $request->barangtambah[$i]; 
-            $barang->kerusakan = $request->kerusakantambah[$i];
-            $barang->servis_id = $servis->id;
-            $barang->save(); 
-        }
+    //     foreach ($request->barangs as $barang) {
+    //         $barangedit = Barang::find($request->idbarang[$index]) ;
+    //         $barangedit->nm_barang = $barang;
+    //         $barangedit->kerusakan = $request->kerusakan[$index];
+    //         $index++;
+    //         $barangedit->save();
+    //      }
+    //   }
+    //     // $index2=0;
+    //     for ($i=0; $i <  count( $request->barangtambah) ; $i++) { 
+    //         $barang = new Barang();
+    //         $barang->nm_barang = $request->barangtambah[$i]; 
+    //         $barang->kerusakan = $request->kerusakantambah[$i];
+    //         $barang->servis_id = $servis->id;
+    //         $barang->save(); 
+    //     }
 
         return redirect('/servis/index');
 
-        dd($request->all());
+        // dd($request->all());
     }
 
     /**
@@ -143,5 +146,12 @@ class ServisController extends Controller
         $servis->delete();
        
         return redirect('/servis/index');
+    }
+
+    public function sruktur()
+    {
+        
+       
+        return view('page.servis.sruktur');
     }
 }

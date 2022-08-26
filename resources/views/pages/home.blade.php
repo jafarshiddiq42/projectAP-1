@@ -187,33 +187,39 @@
                                                     alt="">
                                             </div>
                                             <div class="d-flex flex-column ms-1">
-                                                <span class="fw-bold text-dark">Julio Baker</span>
-                                                <span class="font-size-sm">Julio@themenate.com</span>
+                                                <span class="fw-bold text-dark">Admin</span>
+                                               
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    {{-- <a href="javascript:void(0)" class="dropdown-item">
                                         <div class="d-flex align-items-center">
                                             <i class="font-size-lg me-2 feather icon-user"></i>
                                             <span>Profile</span>
                                         </div>
-                                    </a>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    </a> --}}
+                                    {{-- <a href="javascript:void(0)" class="dropdown-item">
                                         <div class="d-flex align-items-center">
                                             <i class="font-size-lg me-2 feather icon-settings"></i>
                                             <span>Settings</span>
                                         </div>
-                                    </a>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    </a> --}}
+                                    {{-- <a href="javascript:void(0)" class="dropdown-item">
                                         <div class="d-flex align-items-center"><i
                                                 class="font-size-lg me-2 feather icon-life-buoy"></i>
                                             <span>Support</span>
                                         </div>
-                                    </a>
+                                    </a> --}}
                                     <a href="javascript:void(0)" class="dropdown-item">
-                                        <div class="d-flex align-items-center"><i
-                                                class="font-size-lg me-2 feather icon-power"></i>
-                                            <span>Sign Out</span>
+                                        <div class="d-flex align-items-center"> <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                          document.getElementById('logout-form').submit();">
+                                             {{ __('keluar') }}
+                                         </a>
+                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                            
                                         </div>
                                     </a>
                                 </div>
@@ -348,6 +354,9 @@
                             </li>
                             <li class="nav-menu-item">
                                 <a href="/barang/index">Data Barang</a>
+                            </li>
+                            <li class="nav-menu-item">
+                                <a href="/layanan/index">Data Layanan</a>
                             </li>
                     </li>
                     <li class="nav-group-title">FORM DATA TRANSAKSI</li>

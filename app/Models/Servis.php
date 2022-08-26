@@ -13,9 +13,13 @@ class Servis extends Model
     {
         return $this->hasOne(Mekanik::class,'id','mekanik_id');
     }
-    public function barangs()
+    // public function barangs()
+    // {
+    //     return $this->hasMany(Barang::class,'servis_id');
+    // }
+    public function layanans()
     {
-        return $this->hasMany(Barang::class,'servis_id');
+        return $this->hasone(Layanan::class,'id','layanan_id');
     }
     public function transaksis()
     {

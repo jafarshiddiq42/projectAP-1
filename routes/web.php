@@ -3,7 +3,7 @@
 use App\Http\Controllers\DataServisController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\MekanikController;
 use App\Http\Controllers\ServisController;
@@ -24,6 +24,7 @@ use App\Http\Controllers\BarangController;
 //     return view('pqhome');
 // });
 
+
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -38,7 +39,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/servis/edit/{id}', [ServisController::class, 'edit']);
     Route::put('/servis/{id}', [ServisController::class, 'update']);
     Route::delete('/servis/{id}', [ServisController::class, 'destroy']);
+    Route::get('/servis/sruktur', [ServisController::class, 'sruktur']);
 
+
+        //route layanan
+        Route::get('/layanan/index', [LayananController::class, 'index']);
+        Route::get('/layanan/form', [LayananController::class, 'create']);
+        Route::post('/layanan/store', [LayananController::class, 'store']);
+        Route::get('/layanan/edit/{id}', [LayananControllerr::class, 'edit']);
+        Route::put('/layanan/{id}', [LayananController::class, 'update']);
+        Route::delete('/layanan/{id}', [LayananController::class, 'destroy']);
 
       //route mekanik
       Route::get('/mekanik/index', [MekanikController::class, 'index']);

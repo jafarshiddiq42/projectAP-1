@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Servis;
-use App\Models\Transaksi;
+use App\Models\Layanan;
+use App\Models\Mekanik;
 use Illuminate\Http\Request;
 
-class TransaksiController extends Controller
+class LayananController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() 
     {
         $nomor=1;
-        $transaksi = Transaksi ::all();
-        return view('page.transaksi.index', compact('transaksi','nomor'));
+        $layanan = Layanan ::all();
+        return view('page.layanan.index', compact('layanan','nomor'));
     }
 
     /**
@@ -26,11 +26,9 @@ class TransaksiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        $TRS =  Transaksi::join('servis','servis.id','transaksis.servis_id')->get();
-        // dd($TRS);
-        // $serviss = Servis::all();
-        return view('page.transaksi.form');
+    {
+        $mekanik = Mekanik::all();
+        return view('page.layanan.form', compact('mekanik'));
     }
 
     /**
@@ -41,16 +39,15 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        $transaksi= new Transaksi();
-        // $transaksi->nofak =$request->nofak;
-        $transaksi->tanggalkeluar =$request->tanggalkeluar;
-        $transaksi->servis_id =$request->idservis;
-        // $transaksi->qty =$request->qty;
-        $transaksi->harga =$request->harga;
-        // $transaksi->total =$request->total;
-        $transaksi->save();
-
-        return redirect('/transaksi/index');
+        $layanan = new Layanan();
+        $layanan->namacustumer = $request->namacustumer;
+        $layanan->mekanik_id = $request->mekanik;
+        $layanan->jenislayanan = $request->jenislayanan;
+        $layanan->tanggallayanan = $request->tanggallayanan;
+        $layanan->alamat = $request->alamat;
+        $layanan->no_hp = $request->no_hp;
+        $layanan->keterangan = $request->keterangan;
+        $layanan->save();
     }
 
     /**
@@ -61,7 +58,7 @@ class TransaksiController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

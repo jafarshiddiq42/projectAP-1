@@ -27,6 +27,24 @@
                             </select>
 
                         </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Jenis Layanan</label>
+                            <select name="layanan" class="form-control" id="">
+                                <option value="" selected disabled>-- jenis layanan --</option>
+                                @foreach ($layanans as $layanan)
+                                    <option value="{{ $layanan->id }}">{{ $layanan->jenislayanan }}</option>
+                                @endforeach
+                            </select>
+                        </div> 
+                        
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Deskripsi</label>
+                            <input type="text" name="kerusakan" value="{{ $servis->kerusakan }}"
+                                class="form-control @error('kerusakan') is-invalid @enderror" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+
+                        </div>
+                    
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Alamat</label>
@@ -55,81 +73,8 @@
 
 
 
-                        <!-- data tambah servis -->
-                        <div class="row">
-                            <div class="p-3">
-                                <a href="#"
-                                    style="  background-color: #04AA6D;
-                                border: none;
-                                color: white;
-                                text-align: center;
-                                padding: 5px 10px;
-                                text-decoration: none;
-                                display: inline-block;
-                                float:right;
-                                font-size: 16px;
-                                margin: 2px 2px;
-                                border-radius: 50%;"
-                                    onclick="event.preventDefault();tes()"><i class="fa fa-plus"></i></a>
-
-                            </div>
-                            <div class="col">
-                                <div class="tes" id="tambahkemari">
-                                    @forelse ($barangs as $barang)
-                                        <div class="row my-2">
-                                            <div class="col-auto d-flex ">
-                                                <div class="align-self-center" style="font-size: 14px">1</div>
-                                            </div>
-                                            <div class="col" hidden>Nama Barang :<input type="text" readonly
-                                                    name="idbarang[]" placeholder="" value="{{ $barang->id }}"
-                                                    class="form-control" placeholder="kerusakan"></div>
-                                            <div class="col">Nama Barang :<input type="text" name="barangs[]"
-                                                    placeholder="" value="{{ $barang->nm_barang }}" class="form-control"
-                                                    placeholder="kerusakan"></div>
-                                            <div class="col">Kerusakan<input type="text"
-                                                    value="{{ $barang->kerusakan }}" name="kerusakan[]" placeholder=""
-                                                    class="form-control" placeholder="kerusakan"></div>
-                                                    <div class="col-1">
-                                                        <span>
-                                                            <div class="pt-4 ">
-                                                                <a href="/barang/{{$barang->id}}"
-                                                                    style=" 
-                                                                background-color:red;
-                                                                border: none;
-                                                                color: white;
-                                                                text-align: center;
-                                                                padding: 5px 10px;
-                                                                text-decoration: none;
-                                                                display: inline-block;
-                                                                float:right;
-                                                                font-size: 16px;
-                                                                margin: 2px 2px;
-                                                                border-radius: 50%;">
-                                                                <i class="fa fa-minus"></i></a>
-        
-                                                            </div>
-                                                        </span>
-                                                    </div>
-
-                                        </div>
-                                    @empty
-                                        kosong
-                                    @endforelse
-                                </div>
-                            </div>
-                        </div>
-                        <script>
-                            var nomor = 1;
-
-                            function tes() {
-                                nomor++;
-                                $('  <div class="row my-2"> <div class="col-auto d-flex "><div class="align-self-center" style="font-size: 14px">' +
-                                        `${nomor}` +
-                                        '</div></div><div class="col">Nama Barang :<input type="text"   name="barangtambah[]"  placeholder="" class="form-control" placeholder="kerusakan"></div><div class="col">Kerusakan<input type="text"  name="kerusakantambah[]"  placeholder="" class="form-control" placeholder="kerusakan"></div><div class="col-1"></div></div> '
-                                    )
-                                    .appendTo('#tambahkemari');
-                            }
-                        </script>
+                        
+                 
                 </div>
 
                 <button type="submit" class="btn btn-primary">Edit Data</button>

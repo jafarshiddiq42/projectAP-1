@@ -21,7 +21,6 @@
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nama Mekanik</label>
                         <select name="mekanik" class="form-control" id="">
-                            <option value="" selected disabled>-- pilih mekanik--</option>
                             @foreach ($mekanik as $data)
                                 <option value="{{ $data->id }}">{{ $data->namamekanik }}</option>
                             @endforeach
@@ -32,13 +31,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Jenis Layanan</label>
-                        <select name="layanan" class="form-control" id="">
-                            <option value="" selected disabled>-- jenis layanan --</option>
+                        <select name="mekanik" class="form-control" id="">
                             @foreach ($layanans as $layanan)
                                 <option value="{{ $layanan->id }}">{{ $layanan->jenislayanan }}</option>
                             @endforeach
                         </select>
-                        @error('jenislayanan')
+                        @error('namamekanik')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>

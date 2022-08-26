@@ -26,12 +26,12 @@
           <thead >
                     <tr>
                     <th scope="col">NO</th>
-                    <th scope="col">Nofak</th>
+                  
                     <th scope="col">Tanggal </th>
                     <th scope="col">Nama Pelanggan</th>
                     <th scope="col">Qty</th>
                     <th scope="col">Harga</th>
-                    <th scope="col">total</th>
+       
                    
                     <th scope="col">Action</th>
                     </tr>
@@ -40,12 +40,12 @@
                     @forelse ($transaksi as $item)
                         <tr>
                             <td scope="row">{{$nomor++}}</td>
-                            <td>{{$item->nofak}}</td>
+                           
                             <td>{{$item->tanggalkeluar}}</td>
-                            <td>{{$item->servis->namapelanggan}}</td>
+                            {{-- <td>{{$item->serviss->namapelanggan}}</td> --}}
                             <td>{{$item->qty}}</td>  
                             <td>{{$item->harga}}</td>
-                            <td>{{$item->total}}</td>
+                            
                         
                             
                             <td>
