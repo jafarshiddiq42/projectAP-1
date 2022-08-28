@@ -14,15 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transaksis', function (Blueprint $table) {
-            // $table->string('nofak')->unique();
+            
             // $table->bigInteger('mekaniks_id');
             // $table->integer('qty');
             // $table->integer('total');
             // $table->bigInteger('layanans_id');
             $table->id();
+            $table->string('nofak')->unique();
             $table->date('tanggalkeluar');
             $table->bigInteger('servis_id');
             $table->integer('harga');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

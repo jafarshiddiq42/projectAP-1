@@ -36,8 +36,8 @@
                      <div class="text-danger">{{$message}}</div>
                      @enderror
                 </div>
-                <button type="submit"  class="btn btn-primary">Tambah</button>
-                <a href="/mekanik/index" class="btn btn-warning text-white">Batal</a>
+                <button type="submit"  class="btn btn-danger">Tambah</button>
+                <a href="/mekanik/index" class="btn btn-secondary ">Batal</a>
             </form>
         </div>
 

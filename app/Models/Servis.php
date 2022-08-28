@@ -23,6 +23,6 @@ class Servis extends Model
     }
     public function transaksis()
     {
-        return $this->belongsTo(Transaksi::class);
+        return $this->belongsTo(Transaksi::class,'servis_id');
     }
 }

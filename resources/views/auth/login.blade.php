@@ -129,8 +129,8 @@
                                         <img alt="logo" class="img-fluid" src="{{asset('assets/images/logo/logo-fold.png')}}" style="height: 70px;">
                                     </div>
                                 </div>
-                                <div class="text-center mt-3">
-                                    <h3 class="fw-bolder">LOGIN</h3>
+                                <div class="text-center mt-3">  
+                                    <h4 class="fw-bolder">Assalamualaikum</h4>
                                     <p class="text-muted">Silahkan Masukkan Email Dan Kata Sandi  </p>
                                 </div>
                                 <form method="POST" action="{{ route('login') }}">
@@ -161,17 +161,19 @@
                                         </div>
                                        
                                     </div>
-                                    <button type="submit" class="btn btn-primary w-50"> {{ __('Login') }}</button>
+                                    <button type="submit" class="btn btn-primary w-10"> {{ __('Login') }}</button>
 
-                                    <div class="mb-3">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-    
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
-                                        </label>
-                                    </div>
+
+                         
                                 </form>
-                                <div class="divider">
+                                {{-- <div class="mb-3">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div> --}}
+                                {{-- <div class="divider">
                                     <span class="divider-text text-muted">or login with</span>
                                 </div>
                                 <div class="row">
@@ -193,7 +195,7 @@
                                 </div>
                                 <div class="text-center mt-4">
                                     <p class="text-muted">Don't have an account yet? <a href="/register">Sign Up</a></p>
-                                </div>
+                                </div> --}}
                                 
                             </div>
                         </div>

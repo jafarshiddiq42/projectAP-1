@@ -8,6 +8,7 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\MekanikController;
 use App\Http\Controllers\ServisController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,9 @@ use App\Http\Controllers\BarangController;
 // });
 
 
-Auth::routes();
+Auth::routes(
+  ['register'=>false]
+);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/home', function(){return view('pages.home');})->name('home');
@@ -39,14 +42,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/servis/edit/{id}', [ServisController::class, 'edit']);
     Route::put('/servis/{id}', [ServisController::class, 'update']);
     Route::delete('/servis/{id}', [ServisController::class, 'destroy']);
-    Route::get('/servis/sruktur', [ServisController::class, 'sruktur']);
+    // Route::get('/servis/sruktur', [ServisController::class, 'sruktur']);
 
 
         //route layanan
         Route::get('/layanan/index', [LayananController::class, 'index']);
         Route::get('/layanan/form', [LayananController::class, 'create']);
         Route::post('/layanan/store', [LayananController::class, 'store']);
-        Route::get('/layanan/edit/{id}', [LayananControllerr::class, 'edit']);
+        Route::get('/layanan/edit/{id}', [LayananController::class, 'edit']);
         Route::put('/layanan/{id}', [LayananController::class, 'update']);
         Route::delete('/layanan/{id}', [LayananController::class, 'destroy']);
 
@@ -58,13 +61,18 @@ Route::group(['middleware' => 'auth'], function () {
       Route::put('/mekanik/{id}', [MekanikController::class, 'update']);
       Route::delete('/mekanik/{id}', [MekanikController::class, 'destroy']);
   
-     
 
        //route Barang
        Route::get('/barang/index', [BarangController::class, 'index']);
        Route::get('/barang/{id}', [BarangController::class, 'destroy']);
         //route transaki
       Route::get('/transaksi/index', [TransaksiController::class, 'index']);
-      Route::get('/transaksi/form', [TransaksiController::class, 'create']);
+      // Route::get('/transaksi/form', [TransaksiController::class, 'create']);
       Route::post('/transaksi/store', [TransaksiController::class, 'store']);
+      Route::post('/bayar/{ID}', [TransaksiController::class, 'bayar']);
+      Route::get('/transaksi/form', [TransaksiController::class, 'tambah']);
+      Route::get('/transaksi/faktur/{id}', [TransaksiController::class, 'printfaktur']);
+      Route::get('/laporan', [LaporanController::class, 'index']);
+
+
 });

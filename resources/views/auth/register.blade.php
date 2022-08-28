@@ -77,7 +77,7 @@
 @endsection --}}
 
 
-
+{{-- 
 
 @extends('layouts.login')
 <!DOCTYPE html>
@@ -193,4 +193,4 @@
 
 </body>
 
-</html>
+</html> --}}

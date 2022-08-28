@@ -13,7 +13,7 @@
                         <input type="text" name="namapelanggan" value="{{ old('namapelangan') }}"
                             class="form-control @error('kode') is-invalid @enderror" id="exampleInputEmail1"
                             aria-describedby="emailHelp">
-                        @error('namapelangan')
+                        @error('namapelanggan')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -42,6 +42,8 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+
+              
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Deskripsi</label>
@@ -88,12 +90,14 @@
 
 
                     <!-- data tambah servis -->
-                   
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-danger t">Tambah</button>
+                        <a href="/servis/index" class="btn btn-secondary ">Batal</a>
+                    </div>
                    
             </div>
         </div>
-        <button type="submit" class="btn btn-danger t">Tambah</button>
-        <a href="/servis/index" class="btn btn-secondary ">Batal</a>
+       
         </form>
     </div>
     </div>

@@ -26,13 +26,12 @@
           <thead >
                     <tr>
                     <th scope="col">NO</th>
-                  
-                    <th scope="col">Tanggal </th>
+                    <th scope="col">Nofak </th>
+                    <th scope="col">Tanggal</th>
                     <th scope="col">Nama Pelanggan</th>
-                    <th scope="col">Qty</th>
+                    <th scope="col">Barang</th>
                     <th scope="col">Harga</th>
-       
-                   
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -40,21 +39,28 @@
                     @forelse ($transaksi as $item)
                         <tr>
                             <td scope="row">{{$nomor++}}</td>
-                           
+                            <td>{{$item->nofak}}</td>
                             <td>{{$item->tanggalkeluar}}</td>
-                            {{-- <td>{{$item->serviss->namapelanggan}}</td> --}}
-                            <td>{{$item->qty}}</td>  
+                            <td>{{$item->serviss->namapelanggan}}</td>
+                            <td>{{$item->serviss->layanans->jenislayanan}}</td>
                             <td>{{$item->harga}}</td>
-                            
-                        
-                            
                             <td>
-                                <a href="/transaki/edit/{{$item->id}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-                                
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$item->id}}">
+                                <form action="/bayar/{{$item->id}}" method="post">
+                                    @csrf
+                                    @if ($item->status == 0)
+                                        <button type="submit" class="btn btn-outline-primary">Bayar</button>
+                                    @else
+                                        Sudah Dibayar
+                                    @endif
+                                </form>
+                            </td>
+                            <td>
+                                {{-- <a href="/transaki/edit/{{$item->id}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a> --}}
+                                {{-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#d{{$item->id}}">
                                     <i class="fa fa-trash"></i>
-                                </button>
-                                <div class="modal fade" id="staticBackdrop{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                </button> --}}
+                                <a href="/transaksi/faktur/{{$item->id}}" target="_blank" class="btn btn-danger  btn-sm" ><i class="fa fa-print"></i></a>
+                                <div class="modal fade" id="d{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                       <div class="modal-content">
                                         <div class="modal-header">
@@ -62,7 +68,7 @@
                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body text-black" >
-                                          Yakin Data Pelanggan {{$item->namapelanggan}} Ingin Di Hapus?
+                                          Yakin Data Pelanggan <b>{{$item->serviss->namapelanggan}}</b> Ingin Di Hapus?
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Espire - Admin Dashboard Template</title>
+    <title>LASER</title>
     <script src="https://kit.fontawesome.com/2df354a6a8.js" crossorigin="anonymous"></script>
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.ico') }}">
@@ -14,6 +14,7 @@
 
     <!-- Core css -->
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">
+    @yield('css')
 
 </head>
 
@@ -26,7 +27,7 @@
                     <div class="header-nav-left">
                         <div class="header-nav-item desktop-toggle">
                             <div class="header-nav-item-select cursor-pointer">
-                                <i class="nav-icon feather icon-menu icon-arrow-right"></i>
+                                {{-- <i class="nav-icon feather icon-menu icon-arrow-right"></i> --}}
                             </div>
                         </div>
                         <div class="header-nav-item mobile-toggle">
@@ -39,9 +40,9 @@
                         <div class="header-nav-item">
                             <div class="dropdown header-nav-item-select nav-notification">
                                 <div class="toggle-wrapper" id="nav-notification-dropdown" data-bs-toggle="dropdown">
-                                    <i class="header-nav-item-select nav-icon feather icon-bell"></i>
+                                    <i class="header-nav-item-select nav-icon ">Hai {{ Auth::user()->name }}</i>
                                 </div>
-                                <div class="dropdown-menu dropdown-menu-end">
+                                {{-- <div class="dropdown-menu dropdown-menu-end">
                                     <div class="nav-notification-header">
                                         <h5 class="mb-0">Notifications</h5>
                                         <a href="#" class="font-size-sm">Mark All as Read</a>
@@ -127,17 +128,17 @@
                                     <div class="nav-notification-footer">
                                         <a href="#" class="font-size-sm">View All</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
-                        <div class="header-nav-item">
+                        {{-- <div class="header-nav-item">
                             <div class="header-nav-item-select">
                                 <div class="toggle-wrapper" data-bs-toggle="modal" data-bs-target="#quick-view">
                                     <i class="nav-icon feather icon-settings"></i>
                                 </div>
                             </div>
-                        </div>
-                        <div class="header-nav-item">
+                        </div> --}}
+                        {{-- <div class="header-nav-item">
                             <div class="dropdown header-nav-item-select">
                                 <div class="toggle-wrapper" id="nav-lang-dropdown" data-bs-toggle="dropdown">
                                     <div class="avatar avatar-circle avatar-image"
@@ -168,8 +169,8 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="header-nav-item">
+                        </div> --}}
+                        {{-- <div class="header-nav-item">
                             <div class="dropdown header-nav-item-select nav-profile">
                                 <div class="toggle-wrapper" id="nav-profile-dropdown" data-bs-toggle="dropdown">
                                     <div class="avatar avatar-circle avatar-image"
@@ -188,43 +189,45 @@
                                             </div>
                                             <div class="d-flex flex-column ms-1">
                                                 <span class="fw-bold text-dark">Admin</span>
-                                               
+
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <a href="javascript:void(0)" class="dropdown-item">
+                                    <a href="javascript:void(0)" class="dropdown-item">
                                         <div class="d-flex align-items-center">
                                             <i class="font-size-lg me-2 feather icon-user"></i>
                                             <span>Profile</span>
                                         </div>
-                                    </a> --}}
-                                    {{-- <a href="javascript:void(0)" class="dropdown-item">
+                                    </a>
+                                    <a href="javascript:void(0)" class="dropdown-item">
                                         <div class="d-flex align-items-center">
                                             <i class="font-size-lg me-2 feather icon-settings"></i>
                                             <span>Settings</span>
                                         </div>
-                                    </a> --}}
-                                    {{-- <a href="javascript:void(0)" class="dropdown-item">
+                                    </a>
+                                    <a href="javascript:void(0)" class="dropdown-item">
                                         <div class="d-flex align-items-center"><i
                                                 class="font-size-lg me-2 feather icon-life-buoy"></i>
                                             <span>Support</span>
                                         </div>
-                                    </a> --}}
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        <div class="d-flex align-items-center"> <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
+                                    </a>
+                                    <a href="" class="dropdown-item">
+                                        <div class="d-flex align-items-center"> <a class="dropdown-item"
+                                                href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
                                                           document.getElementById('logout-form').submit();">
-                                             {{ __('keluar') }}
-                                         </a>
-                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                            
+                                                {{ __('keluar') }}
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+
                                         </div>
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -243,7 +246,7 @@
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-menu-item router-link-active">
-                        <a href="index.html">
+                        <a href="/">
                             <i class="feather icon-home"></i>
                             <span class="nav-menu-item-title">Dashboard</span>
                         </a>
@@ -267,7 +270,7 @@
                             <span class="nav-menu-item-title">Calendar</span>
                         </a>
                     </li> --}}
-                    
+
                     {{-- <li class="nav-submenu">
                         <a class="nav-submenu-title">
                             <i class="feather icon-box"></i>
@@ -343,29 +346,30 @@
                             <span> DATA</span>
                             <i class="nav-submenu-arrow"></i>
                         </a>
-                      
+
                         <ul class="nav-menu menu-collapse">
-                            <li class="nav-group-title">FORM DATAS SERVIS</li> 
-                            {{-- <li class="nav-menu-item">
-                                <a href="/servis/index">Form Servis</a>
-                            </li> --}}
+                            <li class="nav-group-title"> DATA MASTER</li>
                             <li class="nav-menu-item">
                                 <a href="/mekanik/index">Data Mekanik</a>
                             </li>
-                            <li class="nav-menu-item">
-                                <a href="/barang/index">Data Barang</a>
-                            </li>
+
                             <li class="nav-menu-item">
                                 <a href="/layanan/index">Data Layanan</a>
                             </li>
+                            <li class="nav-menu-item">
+                                <a href="/servis/index">Data Servis</a>
+                            </li>
+                            <li class="nav-menu-item">
+                                <a href="/transaksi/index">Data Transaksi</a>
+                            </li>
+
                     </li>
-                    <li class="nav-group-title">FORM DATA TRANSAKSI</li>
+                    <li class="nav-group-title"> Laporan</li>
                     <li class="nav-menu-item">
-                        <a href="/servis/index">Data Servis</a>
+                        <a href="/laporan">Laporan Servis</a>
                     </li>
-                    <li class="nav-menu-item">
-                        <a href="/transaksi/index">Data Transaksi</a>
-                    </li>
+
+
                 </ul>
                 </li>
 
@@ -391,28 +395,29 @@
                             <span class="nav-menu-item-title">Chart</span>
                         </a>
                     </li> --}}
-                <li class="nav-group-title">Laporan</li>
+                <li class="nav-group-title"></li>
                 <li class="nav-submenu">
                     <a class="nav-submenu-title">
                         <i class="feather icon-settings"></i>
-                        <span>Data Laporan</span>
+                        <span>AUTH</span>
                         <i class="nav-submenu-arrow"></i>
                     </a>
                     <ul class="nav-menu menu-collapse">
-                        <li class="nav-menu-item">
-                            <a href="v-profile-personal.html">Laporan Data Servis</a>
-                        </li>
-                        <li class="nav-menu-item">
-                            <a href="v-invoice.html">Laporan Transaksi</a>`
-                        </li>
-                        
+                       
 
-                        {{-- <li class="nav-menu-item">
-                                <a href="v-faq.html">FAQ</a>
-                            </li> --}}
-                        {{-- <li class="nav-menu-item">
-                                <a href="v-pricing.html">Pricing</a>
-                            </li> --}}
+
+                        <li class="nav-menu-item">
+                            <a class="dropdown-item"
+                            href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                            <span>{{ __('KELUAR') }} </span>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                            class="d-none">
+                            @csrf
+                        </form>
+                            </li>
                         {{-- <li class="nav-menu-item">
                                 <a href="v-user-list.html">User List</a>
                             </li> --}}
@@ -465,94 +470,89 @@
             <!-- Side Nav END -->
 
             <!-- Content START -->
-           
-                <div class="content">
 
+            <div class="content">
+                @yield('content')
+            </div>
 
-                    @yield('content')
-
-                </div>
-                <!-- Quick View START -->
-                <div class="modal modal-right fade quick-view" id="quick-view">
-                    <div class="modal-dialog right">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title pull-left">Theme Config</h4>
-                                <button type="button" class="close pull-right" data-bs-dismiss="modal">
-                                    <span>×</span>
-                                </button>
+            <!-- Quick View START -->
+            {{-- <div class="modal modal-right fade quick-view" id="quick-view">
+                <div class="modal-dialog right">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">Theme Config</h4>
+                            <button type="button" class="close pull-right" data-bs-dismiss="modal">
+                                <span></span>
+                            </button>
+                        </div>
+                        <div class="modal-body scrollable">
+                            <div class="mb-4">
+                                <h5 class="mb-0">Header Color</h5>
+                                <p>Config header background color</p>
+                                <div class="theme-configurator d-flex mt-2">
+                                    <div class="radio">
+                                        <input id="header-default" name="header-theme" type="radio" checked
+                                            value="#ffffff">
+                                        <label for="header-default"></label>
+                                    </div>
+                                    <div class="radio">
+                                        <input id="header-primary" name="header-theme" type="radio" value="#11a1fd">
+                                        <label for="header-primary"></label>
+                                    </div>
+                                    <div class="radio">
+                                        <input id="header-success" name="header-theme" type="radio" value="#00c569">
+                                        <label for="header-success"></label>
+                                    </div>
+                                    <div class="radio">
+                                        <input id="header-info" name="header-theme" type="radio" value="#5a75f9">
+                                        <label for="header-info"></label>
+                                    </div>
+                                    <div class="radio">
+                                        <input id="header-warning" name="header-theme" type="radio"
+                                            value="#ffc833">
+                                        <label for="header-warning"></label>
+                                    </div>
+                                    <div class="radio">
+                                        <input id="header-danger" name="header-theme" type="radio"
+                                            value="#f46363">
+                                        <label for="header-danger"></label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-body scrollable">
-                                <div class="mb-4">
-                                    <h5 class="mb-0">Header Color</h5>
-                                    <p>Config header background color</p>
-                                    <div class="theme-configurator d-flex mt-2">
-                                        <div class="radio">
-                                            <input id="header-default" name="header-theme" type="radio" checked
-                                                value="#ffffff">
-                                            <label for="header-default"></label>
-                                        </div>
-                                        <div class="radio">
-                                            <input id="header-primary" name="header-theme" type="radio"
-                                                value="#11a1fd">
-                                            <label for="header-primary"></label>
-                                        </div>
-                                        <div class="radio">
-                                            <input id="header-success" name="header-theme" type="radio"
-                                                value="#00c569">
-                                            <label for="header-success"></label>
-                                        </div>
-                                        <div class="radio">
-                                            <input id="header-info" name="header-theme" type="radio"
-                                                value="#5a75f9">
-                                            <label for="header-info"></label>
-                                        </div>
-                                        <div class="radio">
-                                            <input id="header-warning" name="header-theme" type="radio"
-                                                value="#ffc833">
-                                            <label for="header-warning"></label>
-                                        </div>
-                                        <div class="radio">
-                                            <input id="header-danger" name="header-theme" type="radio"
-                                                value="#f46363">
-                                            <label for="header-danger"></label>
-                                        </div>
-                                    </div>
+                            <hr>
+                            <div>
+                                <h5 class="mb-0">Side Nav Dark</h5>
+                                <p>Change Side Nav to dark</p>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="side-nav-theme-toggle"
+                                        id="side-nav-theme-toggle">
+                                    <label class="form-check-label" for="side-nav-theme-toggle"></label>
                                 </div>
-                                <hr>
-                                <div>
-                                    <h5 class="mb-0">Side Nav Dark</h5>
-                                    <p>Change Side Nav to dark</p>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" name="side-nav-theme-toggle"
-                                            id="side-nav-theme-toggle">
-                                        <label class="form-check-label" for="side-nav-theme-toggle"></label>
-                                    </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <h5 class="mb-0">Folded Menu</h5>
+                                <p>Toggle Folded Menu</p>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="side-nav-fold-toogle"
+                                        id="side-nav-fold-toogle">
+                                    <label class="form-check-label" for="side-nav-fold-toogle"></label>
                                 </div>
-                                <hr>
-                                <div>
-                                    <h5 class="mb-0">Folded Menu</h5>
-                                    <p>Toggle Folded Menu</p>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" name="side-nav-fold-toogle"
-                                            id="side-nav-fold-toogle">
-                                        <label class="form-check-label" for="side-nav-fold-toogle"></label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h5 class="mb-0">Horizontal Layout</h5>
-                                    <p>Set Horizontal Layout</p>
-                                    <div class="btn-group btn-group-sm">
-                                        <a href="#" class="btn btn-outline-primary active"
-                                            aria-current="page">Vertical</a>
-                                        <a href="h-index.html" class="btn btn-outline-primary">Horizontal</a>
-                                    </div>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Horizontal Layout</h5>
+                                <p>Set Horizontal Layout</p>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="#" class="btn btn-outline-primary active"
+                                        aria-current="page">Vertical</a>
+                                    <a href="h-index.html" class="btn btn-outline-primary">Horizontal</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-          
+            </div> --}}
+
             <!-- Quick View END -->
             <!-- Footer START -->
             <div class="footer">
@@ -569,17 +569,25 @@
         <!-- Content END -->
     </div>
     </div>
-
+    @yield('script')
 
     <!-- Core Vendors JS -->
     <script src="{{ asset('assets/js/vendors.min.js') }}"></script>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('table.display').DataTable();
+        });
+    </script>
     <!-- page js -->
     {{-- <script src="{{ asset('assets/vendors/apexcharts/dist/apexcharts.min.js') }}"></script> --}}
     <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 
     <!-- Core JS -->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
+
 
 </body>
 

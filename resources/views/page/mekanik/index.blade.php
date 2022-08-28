@@ -19,14 +19,14 @@
                 <a href="/mekanik/form" class="float-end btn btn-secondary">Tambah Data</a>
             </div>
             <div class="mx-4 mt-4">
-                <table id="example" class="table ">
+                <table id="example" class="table display">
                     <thead>
 
                         <tr>
                             <th scope="col">NO</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Alamat</th>
-                            <th scope="col">Telp/Hp</th>
+                            {{-- <th scope="col">Alamat</th>
+                            <th scope="col">Telp/Hp</th> --}}
 
                             <th scope="col">Action</th>
                         </tr>
@@ -36,8 +36,8 @@
                             <tr>
                                 <td scope="row">{{ $nomor++ }}</td>
                                 <td>{{ $item->namamekanik }}</td>
-                                <td>{{ $item->alamatmekanik }}</td>
-                                <td>{{ $item->no_Hp }}</td>
+                                {{-- <td>{{ $item->alamatmekanik }}</td>
+                                <td>{{ $item->no_Hp }}</td> --}}
 
                                 <td>
                                     <a href="/mekanik/edit/{{ $item->id }}" class="btn btn-primary btn-sm "><i class="fa fa-pencil"></i></a>

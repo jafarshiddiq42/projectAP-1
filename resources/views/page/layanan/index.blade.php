@@ -54,7 +54,7 @@
             </div>
             <div class="mx-4 mt-4">
 
-                <table class="table">
+                <table class="table display">
                     <thead>
                         <tr>
                             <th>Id Layanan</th>
@@ -71,11 +71,43 @@
                                     {{ $layanan->jenislayanan }}
                                 </td>
                                 <td>
-                                    <form method="POST" action="/layanan/{{ $layanan->id }}">
+                                    {{-- <form method="POST" action="/layanan/{{ $layanan->id }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                                    </form>
+                                    </form> --}}
+                                    {{-- <a href="/layanan/edit/{{$layanan->id}}" class="btn btn-primary btn-sm "><i class="fa fa-pencil"></i></a> --}}
+                                    <button type="button" class="btn btn-primary btn-sm btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#e{{$layanan->id}}">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                                <div class="modal fade" id="e{{$layanan->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Form Tambah Layanan</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/layanan/{{ $layanan->id }}" method="post">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="form-group">
+                                                        <label for="">Nama Layanan</label>
+                                                        <input name="namalayanan" value="{{$layanan->jenislayanan}}" type="text" class="form-control">
+                                                    </div>
+                                                
+                    
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Edit Data</button>
+                                                <a href="/layanan/index" class="btn btn-warning text-white">Batal</a>
+                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 </td>
                             </tr>
                         @empty

@@ -30,12 +30,16 @@
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Jenis Layanan</label>
                             <select name="layanan" class="form-control" id="">
-                                <option value="" selected disabled>-- jenis layanan --</option>
+                                {{-- <option value="" selected disabled>-- jenis layanan --</option> --}}
                                 @foreach ($layanans as $layanan)
-                                    <option value="{{ $layanan->id }}">{{ $layanan->jenislayanan }}</option>
+                                    <option @if ($layanan->id == $servis->layanan_id)
+                                        selected
+                                    @endif value="{{ $layanan->id }}">{{ $layanan->jenislayanan }}</option>
                                 @endforeach
                             </select>
                         </div> 
+
+                   
                         
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Deskripsi</label>
@@ -77,8 +81,8 @@
                  
                 </div>
 
-                <button type="submit" class="btn btn-primary">Edit Data</button>
-                <a href="/servis/index" class="btn btn-warning text-white">Batal</a>
+                <button type="submit" class="btn btn-danger">Edit Data</button>
+                <a href="/servis/index" class="btn btn-secondarya">Batal</a>
             </form>
 
         </div>

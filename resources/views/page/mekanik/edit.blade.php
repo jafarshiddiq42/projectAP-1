@@ -27,8 +27,8 @@
                     <label for="exampleInputEmail1" class="form-label">Telp/Hp</label>
                     <input type="text" name="no_Hp"  value="{{$mekanik->no_Hp}}"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
-                <button type="submit" class="btn btn-primary">Edit Data</button>
-                <a href="/mekanik/index" class="btn btn-warning text-white">Batal</a>
+                <button type="submit" class="btn btn-danger">Edit Data</button>
+                <a href="/mekanik/index" class="btn btn-secondary ">Batal</a>
              
             </form>
             

@@ -5,20 +5,20 @@
             <h4 class="float-start">EDIT SERVIS</h4>
         </div>
         <div class="card-body">
-            <form method="post" action="/servis/{{ $servis->id }}">
+            <form method="post" action="/layanan/{{ $servis->id }}">
                 @csrf
                 @method('PUT')
                 <div class="card-body m-4">
-                    <form method="post" action="/servis/store">
+                    <form method="post" action="/layanan/store">
                         @csrf
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Nama Pelanggan</label>
-                            <input type="text" name="namapelanggan" value="{{ $servis->namapelanggan }}"
-                                class="form-control @error('namapelanggan') is-invalid @enderror" id="exampleInputEmail1"
+                            <label for="exampleInputEmail1" class="form-label">Jenis Layanan</label>
+                            <input type="text" name="namalayanan" value="{{ $layanans->jenislayanan }}"
+                                class="form-control @error('namalayanan') is-invalid @enderror" id="exampleInputEmail1"
                                 aria-describedby="emailHelp">
                         </div>
 
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nama Mekanik</label>
                             <select name="mekanik" class="form-control" id="">
                                 @foreach ($mekanik as $data)
@@ -131,7 +131,7 @@
                                     .appendTo('#tambahkemari');
                             }
                         </script>
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary">Edit Data</button>
                 <a href="/servis/index" class="btn btn-warning text-white">Batal</a>

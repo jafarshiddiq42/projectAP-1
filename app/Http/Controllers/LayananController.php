@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Layanan;
+use App\Models\Mekanik;
 use Illuminate\Http\Request;
 
 class LayananController extends Controller
@@ -25,7 +26,8 @@ class LayananController extends Controller
      */
     public function create()
     {
-        
+    
+        return view('page.layanan.form');
     }
 
     /**
@@ -39,7 +41,7 @@ class LayananController extends Controller
         $layananbaru = new Layanan();
         $layananbaru->jenislayanan = $request->namalayanan;
         $layananbaru->save();
-        return redirect()->back();
+        return redirect('/layanan/index');
 
     }
 
@@ -62,7 +64,9 @@ class LayananController extends Controller
      */
     public function edit($id)
     {
-        //
+        $layananbaru = Layanan:: find ($id);
+
+        return view('page.layanan.edit',compact('layanan'));
     }
 
     /**
@@ -74,7 +78,12 @@ class LayananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $layananbaru = Layanan:: find ($id);
+     
+        $layananbaru->jenislayanan = $request->namalayanan;
+        $layananbaru->save();
+
+        return redirect('/layanan/index');
     }
 
     /**

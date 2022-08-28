@@ -19,7 +19,7 @@ class ServisController extends Controller
     public function index()
     {
         $nomor=1;
-        $servis = Servis ::all();
+        $servis = Servis::all();
         return view('page.servis.index', compact('servis','nomor'));
         // dd($servis);
     }

@@ -1,4 +1,4 @@
-
+@extends('pages.home')
 
 <style>
 body{
