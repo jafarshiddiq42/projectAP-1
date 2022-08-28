@@ -134,7 +134,10 @@ class TransaksiController extends Controller
         if (Transaksi::all()->count() != 0) {
             $kd = Transaksi::latest('id')->first();
             $kodejadi = $kd->id + 1;
-        }   
+        }  
+        else {
+            $kodejadi =1;
+        }
         // dd($kodejadi);
         return view('page.transaksi.form',compact('kodejadi','serviss','layanans'));
     }
