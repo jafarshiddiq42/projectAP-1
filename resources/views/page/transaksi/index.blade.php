@@ -41,7 +41,11 @@
                             <td scope="row">{{$nomor++}}</td>
                             <td>{{$item->nofak}}</td>
                             <td>{{$item->tanggalkeluar}}</td>
-                            <td>{{$item->serviss->namapelanggan}}</td>
+                            <td>@if ($item->serviss->namapelanggan == null)
+                                data tidak tersedia
+                            @else
+                                {{$item->serviss->namapelanggan}}
+                            @endif</td>
                             <td>{{$item->serviss->layanans->jenislayanan}}</td>
                             <td>{{$item->harga}}</td>
                             <td>
