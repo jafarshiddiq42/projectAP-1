@@ -54,12 +54,18 @@
                 <table class="table" style="font-size: small">
                    <tbody >
                     @foreach ($transaksis as $transaksi)
-                    <tr>
-                        <td>{{'TR-'.str_pad($transaksi->id,5,0,STR_PAD_LEFT)}}</td>
-                        <td>{{$transaksi->serviss->namapelanggan}}</td>
-                        <td>{{$transaksi->serviss->layanans->jenislayanan}}</td>
-                        <td></td>
-                    </tr>
+                   @if ($transaksi->serviss == null)
+                     <tr>
+                      <td colspan="4">tidak tersedia</td>  
+                    </tr>  
+                   @else
+                   <tr>
+                    <td>{{'TR-'.str_pad($transaksi->id,5,0,STR_PAD_LEFT)}}</td>
+                    <td>{{$transaksi->serviss->namapelanggan}}</td>
+                    <td>{{$transaksi->serviss->layanans->jenislayanan}}</td>
+                    <td></td>
+                </tr>
+                   @endif
                     @endforeach
                    </tbody>
                 </table>

@@ -38,15 +38,18 @@
                 <tbody>
                     @forelse ($transaksi as $item)
                         <tr>
+                            @if (($item->serviss) == null)
+                               
+                            @else
                             <td scope="row">{{$nomor++}}</td>
                             <td>{{$item->nofak}}</td>
                             <td>{{$item->tanggalkeluar}}</td>
-                            <td>@if ($item->serviss->namapelanggan == null)
-                                data tidak tersedia
+                            <td>  {{$item->serviss->namapelanggan}}</td>
+                            <td>@if (($item->serviss) == null)
+                               
                             @else
-                                {{$item->serviss->namapelanggan}}
+                            {{$item->serviss->layanans->jenislayanan}}
                             @endif</td>
-                            <td>{{$item->serviss->layanans->jenislayanan}}</td>
                             <td>{{$item->harga}}</td>
                             <td>
                                 <form action="/bayar/{{$item->id}}" method="post">
@@ -72,7 +75,7 @@
                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body text-black" >
-                                          Yakin Data Pelanggan <b>{{$item->serviss->namapelanggan}}</b> Ingin Di Hapus?
+                                          Yakin Data Transaksi <b></b> Ingin Di Hapus?
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -88,7 +91,9 @@
                                   </div>
                                   
                             </td>
+                            @endif
                         </tr>
+                            
                     @empty
                         <td colspan="12">Tidak Ada Data</td>                        
                     @endforelse
