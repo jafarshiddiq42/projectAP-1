@@ -15,16 +15,15 @@ return new class extends Migration
     {
         Schema::create('servis', function (Blueprint $table) {
             $table->id();
-            $table->string('namapelanggan');
             $table->bigInteger('mekanik_id');
             $table->bigInteger('layanan_id');
-            // $table->string('kdbarang');
-            // $table->string('nmbarang');
-            // $table->string('alamat');
+            $table->bigInteger('pelanggan_id');
+            $table->bigInteger('barang_id');
             $table->date('tanggalmasuk');
-            $table->string('alamat');
-            $table->string('telp');   
-            $table->string('kerusakan');
+            $table->date('tglselesai')->nullable();
+            $table->boolean('status')->nullable()->default(false);
+        
+      
             $table->timestamps();
         });
     }

@@ -341,14 +341,11 @@
                         </ul>
                     </li> --}}
                     <li class="nav-submenu">
-                        <a class="nav-submenu-title">
-                            <i class="feather icon-file-text"></i>
-                            <span> DATA</span>
-                            <i class="nav-submenu-arrow"></i>
-                        </a>
-
-                        <ul class="nav-menu menu-collapse">
+                        
                             <li class="nav-group-title"> DATA MASTER</li>
+                            <li class="nav-menu-item">
+                                <a href="/pelanggan/index">Data Pelanggan</a>
+                            </li>
                             <li class="nav-menu-item">
                                 <a href="/mekanik/index">Data Mekanik</a>
                             </li>
@@ -356,13 +353,18 @@
                             <li class="nav-menu-item">
                                 <a href="/layanan/index">Data Layanan</a>
                             </li>
+                           
+                        
+                   
+                            <li class="nav-group-title">Proses</li>
+                           
                             <li class="nav-menu-item">
                                 <a href="/servis/index">Data Servis</a>
                             </li>
                             <li class="nav-menu-item">
                                 <a href="/transaksi/index">Data Transaksi</a>
                             </li>
-
+                        
                     </li>
                     <li class="nav-group-title"> Laporan</li>
                     <li class="nav-menu-item">
@@ -372,6 +374,7 @@
 
                 </ul>
                 </li>
+                
 
 
                 {{-- <li class="nav-submenu">
@@ -395,7 +398,6 @@
                             <span class="nav-menu-item-title">Chart</span>
                         </a>
                     </li> --}}
-                <li class="nav-group-title"></li>
                 <li class="nav-submenu">
                     <a class="nav-submenu-title">
                         <i class="feather icon-settings"></i>
@@ -403,21 +405,19 @@
                         <i class="nav-submenu-arrow"></i>
                     </a>
                     <ul class="nav-menu menu-collapse">
-                       
+
 
 
                         <li class="nav-menu-item">
-                            <a class="dropdown-item"
-                            href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">
-                            <span>{{ __('KELUAR') }} </span>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                            class="d-none">
-                            @csrf
-                        </form>
-                            </li>
+                                <span>{{ __('KELUAR') }} </span>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
                         {{-- <li class="nav-menu-item">
                                 <a href="v-user-list.html">User List</a>
                             </li> --}}

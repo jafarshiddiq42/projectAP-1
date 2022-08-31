@@ -526,6 +526,7 @@ class ComposerStaticInit9b6ed1862a8ed879ee99ced77ad5c086
         'App\\Http\\Controllers\\BarangController' => __DIR__ . '/../..' . '/app/Http/Controllers/BarangController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\LaporanController' => __DIR__ . '/../..' . '/app/Http/Controllers/LaporanController.php',
         'App\\Http\\Controllers\\LayananController' => __DIR__ . '/../..' . '/app/Http/Controllers/LayananController.php',
         'App\\Http\\Controllers\\MekanikController' => __DIR__ . '/../..' . '/app/Http/Controllers/MekanikController.php',
         'App\\Http\\Controllers\\ServisController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServisController.php',

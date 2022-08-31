@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Barang extends Model
+class Pelanggan extends Model
 {
     use HasFactory;
-    public function servis()
+    public function serviss()
     {
         return $this->belongsTo(Servis::class);
     }

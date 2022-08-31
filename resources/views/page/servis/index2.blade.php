@@ -15,22 +15,25 @@
 
         <div class="card">
             <div class="card-header">
-                {{-- <h4 class="float-start"></h4>
-                <a href="/servis/form" class="float-end btn btn-secondary">Tambah Data</a> --}}
+                <h4 class="float-start"></h4>
+                <a href="/servis/form/{{ $id }}" class="float-end btn btn-secondary">Tambah Data</a>
             </div>
             <div class="mx-4 mt-4">
+
                 <table id="example1" class="table display">
                     <thead>
                         <tr>
                             <th scope="col">NO</th>
+                            {{-- <th scope="col">Nama Pelanggan</th> --}}
                             <th scope="col">No Service</th>
-                            <th scope="col">Nama Pelanggan</th>
                             <th scope="col">Nama Mekanik</th>
                             <th scope="col">Jenis Layanan</th>
                             <th scope="col">Kerusakan</th>
-                            <th scope="col">TanggalMasuk</th>
+                            <th scope="col">Tanggal Masuk</th>
+                            <th scope="col">Tanggal Selesai</th>
                             <th scope="col">Status</th>
                             <th scope="col">Detail</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,17 +41,17 @@
                             <tr>
                                 <td scope="row">{{ $nomor++ }}</td>
                                 <td scope="row">{{ 'SRV/'.str_pad($servis->id,4,0,STR_PAD_LEFT).'/'.date_format(date_create($servis->tanggalmasuk),'y') }}</td>
-                                <td>{{ $servis->pelanggans->namapelanggan}}</td>
-                                <td>{{ $servis->mekaniks->namamekanik}}</td>
-                                <td>{{ $servis->layanans->jenislayanan}}</td>
-                                <td>{{ $servis->barangs->kerusakan}}</td>
+                                {{-- <td>{{ $servis->pelanggans->namapelanggan}}</td> --}}
+                                <td>{{ $servis->mekaniks->namamekanik }}</td>
+                                <td>{{ $servis->layanans->jenislayanan }}</td>
+                                <td>{{ $servis->barangs->kerusakan }}</td>
                                 <td class="text-center">{{ date_format(date_create($servis->tanggalmasuk ),'d-m-Y')}}</td>
+                                <td class="text-center">{{ ($servis->tglselesai == null? '-':date_format(date_create($servis->tglselesai ),'d-m-Y') )}}</td>
                                 <td>
                                     @if ($servis->status == 0)
-                                       <span class="text-warning" style="font-weight: bold"> Sedang Dikerjakan</span>
+                                        <span class="text-warning" style="font-weight: bold"> Sedang Dikerjakan</span>
                                     @else
-                                    <span class="text-success" style="font-weight: bold"> Selesai</span>
-
+                                        <span class="text-success" style="font-weight: bold"> Selesai</span>
                                     @endif
                                 </td>
                                 <td>
@@ -127,6 +130,14 @@
                                         </div>
                                     </div>
                                 </td>
+                                <td>
+                                    @if ($servis->status == 0)
+                                         <a href="/servis/update/{{ $servis->id }}" class="btn btn-sm btn-primary">Selesai</a>
+                                        
+                                    @else
+                                        <a href="#" class="btn btn-sm btn-success">Transaksi</a>
+                                    @endif
+                                </td>
                             </tr>
                         @empty
                             <td colspan="8" class="text-center">Tidak Ada Data</td>
@@ -136,6 +147,4 @@
             </div>
         </div>
     </div>
-    
 @endsection
-

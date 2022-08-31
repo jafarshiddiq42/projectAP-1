@@ -13,25 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('barangs', function (Blueprint $table) {
+        Schema::create('pelanggans', function (Blueprint $table) {
             $table->id();
-            $table->string('namabarang');
-            $table->string('merk');
-            $table->string('noseri');
-            $table->string('kerusakan');
-            $table->string('deskripsi');
-            $table->bigInteger('servis_id');
+            $table->string('namapelanggan', 100);
+            $table->string('email', 100);
+            $table->string('nohp', 100);
+            $table->string('alamat', 100)->default('-');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *sda
+     *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('barangs');
+        Schema::dropIfExists('pelanggans');
     }
 };

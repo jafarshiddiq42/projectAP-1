@@ -9,6 +9,8 @@ use App\Http\Controllers\MekanikController;
 use App\Http\Controllers\ServisController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\TesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ use App\Http\Controllers\LaporanController;
 
 
 Auth::routes(
-  ['register'=>false]
+  // ['register'=>false]
 );
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -37,11 +39,16 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::group(['middleware' => 'auth'], function () {
     //route Servis
     Route::get('/servis/index', [ServisController::class, 'index']);
-    Route::get('/servis/form', [ServisController::class, 'create']);
+    Route::get('/servis/form/{id}', [ServisController::class, 'create']);
+    Route::get('/servis/pelanggan/{id}', [ServisController::class, 'perservis']);
     Route::post('/servis/store', [ServisController::class, 'store']);
     Route::get('/servis/edit/{id}', [ServisController::class, 'edit']);
+    Route::get('/servis/update/{id}', [ServisController::class, 'selesai']);
     Route::put('/servis/{id}', [ServisController::class, 'update']);
     Route::delete('/servis/{id}', [ServisController::class, 'destroy']);
+
+
+    
     // Route::get('/servis/sruktur', [ServisController::class, 'sruktur']);
 
 
@@ -60,6 +67,13 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('/mekanik/edit/{id}', [MekanikController::class, 'edit']);
       Route::put('/mekanik/{id}', [MekanikController::class, 'update']);
       Route::delete('/mekanik/{id}', [MekanikController::class, 'destroy']);
+      //route pelanggan
+      Route::get('/pelanggan/index', [PelangganController::class, 'index']);
+      Route::get('/pelanggan/form', [PelangganController::class, 'create']);
+      Route::post('/pelanggan/store', [PelangganController::class, 'store']);
+      Route::get('/pelanggan/edit/{id}', [PelangganController::class, 'edit']);
+      Route::put('/pelanggan/{id}', [PelangganController::class, 'update']);
+      Route::delete('/pelanggan/{id}', [PelangganController::class, 'destroy']);
   
 
        //route Barang
@@ -73,6 +87,10 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('/transaksi/form', [TransaksiController::class, 'tambah']);
       Route::get('/transaksi/faktur/{id}', [TransaksiController::class, 'printfaktur']);
       Route::get('/laporan', [LaporanController::class, 'index']);
+
+
+      Route::get('/tes', [TesController::class, 'index']);
+      Route::get('/tesdata', [TesController::class, 'cekdata']);
 
 
 });

@@ -15,16 +15,14 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             
-            // $table->bigInteger('mekaniks_id');
-            // $table->integer('qty');
-            // $table->integer('total');
-            // $table->bigInteger('layanans_id');
+        
             $table->id();
             $table->string('nofak')->unique();
-            $table->date('tanggalkeluar');
+            $table->date('tanggalbayar');
             $table->bigInteger('servis_id');
             $table->integer('harga');
-            $table->boolean('status');
+            // $table->integer('total');
+            // $table->boolean('status');
             $table->timestamps();
         });
     }

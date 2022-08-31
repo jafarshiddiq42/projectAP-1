@@ -19,9 +19,29 @@ class ServisController extends Controller
     public function index()
     {
         $nomor=1;
-        $servis = Servis::all();
-        return view('page.servis.index', compact('servis','nomor'));
+        $serviss = Servis::all();
+        return view('page.servis.index', compact('serviss','nomor'));
         // dd($servis);
+    }
+    public function perservis($id)
+    {
+        $nomor=1;
+
+        $serviss = Servis::where('pelanggan_id','=',$id)->get();
+        return view('page.servis.index2', compact('serviss','nomor','id'));
+        // dd($serviss);
+    }
+    public function selesai($id)
+    {
+        // $nomor=1;
+
+        $servis = Servis::where('id','=',$id)->first();
+        $servis->status = 1;
+        $servis->tglselesai = date('Y-m-d');
+        $servis->save() ;
+        return redirect()->back();
+        // return view('page.servis.index2', compact('serviss','nomor','id'));
+        // dd($serviss);
     }
 
     /**
@@ -29,11 +49,11 @@ class ServisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create($id) 
     {
         $layanans = Layanan::all();
         $mekanik = Mekanik::all();
-        return view('page.servis.form',compact('mekanik','layanans'));
+        return view('page.servis.form',compact('mekanik','layanans','id'));
     }
 
     /**
@@ -45,20 +65,23 @@ class ServisController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $servis = new Servis();
-        $servis->namapelanggan = $request->namapelanggan;
+        $barang = new Barang();
+        $barang->namabarang = $request->namabarang;
+        $barang->merk = $request->merk;
+        $barang->noseri = $request->noseri;
+        $barang->kerusakan = $request->kerusakan;
+        $barang->deskripsi = $request->desc;
+        $barang->servis_id = 0;
+        $barang->save();
+
+        $servis= new Servis();
         $servis->mekanik_id = $request->mekanik;
         $servis->layanan_id = $request->layanan;
+        $servis->barang_id = $barang->id;   
+        $servis->pelanggan_id = $request->idpelanggan;
         $servis->tanggalmasuk = $request->tanggalmasuk;
-        $servis->alamat = $request->alamat;
-        $servis->telp = $request->telp;
-        $servis->kerusakan = $request->kerusakan;
-
         $servis->save();
-
-        // echo count( $request->barang);
-
-        return redirect('/servis/index');
+        return redirect('/servis/pelanggan/'.$request->idpelanggan);
     }
 
     /**
