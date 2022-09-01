@@ -65,12 +65,9 @@ class TransaksiController extends Controller
 
         // dd($request->all());
         $transaksi= new Transaksi();
-        $transaksi->nofak =$request->kode;
-        $transaksi->tanggalkeluar =$request->tanggalkeluar;
-        $transaksi->servis_id =$request->namapelanggan;
-        // $transaksi->layanan_id = $request->layanan;
-        $transaksi->status = 0;
-
+        $transaksi->nofak =$request->nofak;
+        $transaksi->tanggalbayar =$request->tanggalbayar;
+        $transaksi->servis_id =$request->noservis;
         $transaksi->harga =$request->harga;
         $transaksi->save();
 

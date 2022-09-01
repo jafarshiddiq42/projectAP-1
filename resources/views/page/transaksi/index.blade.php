@@ -31,7 +31,6 @@
                     <th scope="col">Nama Pelanggan</th>
                     <th scope="col">Barang</th>
                     <th scope="col">Harga</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -43,24 +42,14 @@
                             @else
                             <td scope="row">{{$nomor++}}</td>
                             <td>{{$item->nofak}}</td>
-                            <td>{{$item->tanggalkeluar}}</td>
-                            <td>  {{$item->serviss->namapelanggan}}</td>
+                            <td>{{$item->tanggalbayar}}</td>
+                            <td>  {{$item->serviss->pelanggans->namapelanggan}}</td>
                             <td>@if (($item->serviss) == null)
                                
                             @else
                             {{$item->serviss->layanans->jenislayanan}}
                             @endif</td>
                             <td>{{$item->harga}}</td>
-                            <td>
-                                <form action="/bayar/{{$item->id}}" method="post">
-                                    @csrf
-                                    @if ($item->status == 0)
-                                        <button type="submit" class="btn btn-outline-primary">Bayar</button>
-                                    @else
-                                        Sudah Dibayar
-                                    @endif
-                                </form>
-                            </td>
                             <td>
                                 {{-- <a href="/transaki/edit/{{$item->id}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a> --}}
                                 {{-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#d{{$item->id}}">

@@ -14,7 +14,7 @@
                 @csrf   
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">NOFAK</label>
-                    <input type="text" name="kode"  readonly value="{{'TR-'.str_pad($kodejadi,5,0,STR_PAD_LEFT)}}"
+                    <input type="text" name="nofak"  readonly value="{{'TRS-'.str_pad($kodejadi,4,0,STR_PAD_LEFT).date_format(date_create(date('Y-m-d')),'y')}}"
                      class="form-control @error('nofak') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp">
                      @error('nofak')
                      <div class="text-danger">{{$message}}</div>
@@ -23,12 +23,12 @@
          
                
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nama pelanggan</label>
-                    <select name="namapelanggan" class="form-control" id="pelanggan">
+                    <label for="exampleInputEmail1" class="form-label">No Servis</label>
+                    <select name="noservis" class="form-control" id="pelanggan">
                         <option value="#" value="9" selected disabled>-- pilih pelanggan --</option>
                         @foreach ($serviss as $servis)
                        
-                                 <option data-barang="{{$servis->layanans->jenislayanan}}" value="{{$servis->id }}">{{ $servis->namapelanggan }}</option>
+                                 <option data-barang="{{$servis->barangs->namabarang}}" value="{{$servis->id }}">{{  'SRV/'.str_pad($servis->id,4,0,STR_PAD_LEFT).'/'.date_format(date_create($servis->tanggalmasuk),'y') }}-{{ $servis->pelanggans->namapelanggan }}</option>
      
                         @endforeach
                        
@@ -39,7 +39,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Barang</label>
-                    <input type="text" id="barang" name="layanan" value="{{old('jenislayanan')}}"
+                    <input type="text" readonly id="barang"  value="{{old('jenislayanan')}}"
                      class="form-control  @error('harga') is-invalid @enderror"  id="exampleInputPassword1">
                      @error('harga')
                      <div class="text-danger">{{$message}}</div>
@@ -60,7 +60,7 @@
                 
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Tanggal</label>
-                    <input readonly type="date" name="tanggalkeluar" value="{{date('Y-m-d')}}"
+                    <input readonly type="date" name="tanggalbayar" value="{{date('Y-m-d')}}"
                      class="form-control @error('tanggalkeluar') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp">
                      @error('tanggalkeluar')
                      <div class="text-danger">{{$message}}</div>

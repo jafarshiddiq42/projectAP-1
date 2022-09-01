@@ -51,7 +51,7 @@
                                 Nama
                             </div>
                             <div class="col">
-                                : {{ $transaksi->serviss->namapelanggan }}
+                                : {{ $transaksi->serviss->pelanggans->namapelanggan }}
                             </div>
                         </div>
                         <div class="row">
@@ -59,7 +59,7 @@
                                 Tanggal Bayar
                             </div>
                             <div class="col">
-                                : {{ $transaksi->tanggalkeluar }}
+                                : {{ $transaksi->tanggalbayar }}
                             </div>
                         </div>
                     </div>
@@ -68,10 +68,10 @@
                         <div class="row">
 
                             <div class="col">
-                                Nomor Pembayaran
+                                NOFAK
                             </div>
                             <div class="col">
-                                : {{ 'TR-' . str_pad($transaksi->id, 5, 0, STR_PAD_LEFT) }}
+                                : {{$transaksi->nofak}}
                             </div>
 
                         </div>
@@ -93,11 +93,15 @@
                         <tbody>
                             <tr>
                                 <th>1</th>
-                                <th>{{ $transaksi->serviss->layanans->jenislayanan }}</th>
-                                <th>{{ $transaksi->serviss->kerusakan }}</th>
+                                <th>{{ $transaksi->serviss->barangs->namabarang }}</th>
+                                <th>{{ $transaksi->serviss->barangs->deskripsi }}</th>
                                 <th>{{ $transaksi->serviss->tanggalmasuk }}</th>
-                                <th>{{ $transaksi->tanggalkeluar }}</th>
-                                <th>{{ $transaksi->harga }}</th>
+                                <th>{{ $transaksi->serviss->tglselesai }}</th>
+                                <th>{{ 'Rp. '.$transaksi->harga }}</th>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-center" ><b>Total</b></td>
+                                <td colspan="5"  ><b>{{' Rp. '.$transaksi->harga  }}</b></td>
                             </tr>
                         </tbody>
                     </table>
