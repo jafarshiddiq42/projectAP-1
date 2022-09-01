@@ -121,7 +121,7 @@ class TransaksiController extends Controller
     public function tambah()
     {
         // $servis = Servis::all();
-        $serviss = Servis::leftjoin('transaksis','transaksis.servis_id','=','servis.id')->select('servis.*')->whereNull('transaksis.servis_id')->get();
+        $serviss = Servis::leftjoin('transaksis','transaksis.servis_id','=','servis.id')->select('servis.*')->where('servis.status','=',1)->whereNull('transaksis.servis_id')->get();
         // $serviss = Servis::leftouterjoin('transaksis','transaksis.servis_id','=','servis.id')->get();
         // $serviss = DB::table(;)
         $layanans = Layanan::all();

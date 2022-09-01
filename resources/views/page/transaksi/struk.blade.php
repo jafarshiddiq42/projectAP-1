@@ -18,7 +18,7 @@
                 }
             }
         </style>
-        <div class="bg-light overflow-hidden " style="height: 10cm;width:18cm   ;border:1px solid">
+        <div class="bg-light overflow-hidden " style="height: 12cm;width:18cm   ;border:1px solid">
             <div class="row bg-white px-4" style="height: 2cm;border-bottom:1px solid black">
                 <table style="width: 100%;font-size:20px">
                     <tr>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="m-3" style="padding-top: 20px">
-                    <table class="table "
+                    <table class="table table-bordered"
                         style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
                         <thead class=" text-white" style="background-color: rgb(132, 129, 129)">
                             <tr>
@@ -93,8 +93,8 @@
                         <tbody>
                             <tr>
                                 <th>1</th>
-                                <th>{{ $transaksi->serviss->barangs->namabarang }}</th>
-                                <th>{{ $transaksi->serviss->barangs->deskripsi }}</th>
+                                <th style="width: 20%">{{ $transaksi->serviss->barangs->namabarang }}</th>
+                                <th style="text-align: center">{{ $transaksi->serviss->barangs->deskripsi }}</th>
                                 <th>{{ $transaksi->serviss->tanggalmasuk }}</th>
                                 <th>{{ $transaksi->serviss->tglselesai }}</th>
                                 <th>{{ 'Rp. '.$transaksi->harga }}</th>
