@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Layanan;
 use App\Models\Mekanik;
+use App\Models\Pelanggan;
 use App\Models\Servis;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
@@ -27,10 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $transaksis = Transaksi::orderBy('id', 'desc')->take(5)->get();
+        $transaksi = Transaksi::all()->count();
         $layanan = Layanan::all()->count();
         $mekanik = Mekanik::all()->count();
         $servis = Servis::all()->count();
-        return view('page.dashboard',compact('transaksis','layanan','mekanik','servis'));
+        $pelanggan =Pelanggan::all()->count();
+        return view('page.dashboard',compact('transaksi','layanan','mekanik','servis','pelanggan'));
     }
 }
